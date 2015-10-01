@@ -17,7 +17,7 @@ describe 'Unique', ->
             value: [1,2,3]
             key: 'red-car'
 
-        expect(@sut.onEnvelope(envelope).config.value).to.deep.equal [1,2,3]
+        expect(@sut.onEnvelope(envelope)).to.deep.equal 'red-car': [1,2,3]
 
     describe 'when called with value that has non unique items', ->
       it 'should return the message with unique items', ->
@@ -27,7 +27,7 @@ describe 'Unique', ->
             value: [1, 2, 2, 3, 4, 5, 6, 6]
             key: 'red-car'
 
-        expect(@sut.onEnvelope(envelope).config.value).to.deep.equal [1,2,3,4,5,6]
+        expect(@sut.onEnvelope(envelope)).to.deep.equal 'red-car': [1,2,3,4,5,6]
 
     describe 'when called with value of type string unique items', ->
       it 'should return the message with unique items', ->
@@ -37,7 +37,7 @@ describe 'Unique', ->
             value: 'cats'
             key: 'fission'
 
-        expect(@sut.onEnvelope(envelope).config.value).to.deep.equal ['c','a','t','s']
+        expect(@sut.onEnvelope(envelope)).to.deep.equal 'fission': ['c','a','t','s']
 
 
     describe 'when called with value of type string with non unique items', ->
@@ -48,4 +48,4 @@ describe 'Unique', ->
             value: 'alpha'
             key: 'fission'
 
-        expect(@sut.onEnvelope(envelope).config.value).to.deep.equal ['a','l','p','h']
+        expect(@sut.onEnvelope(envelope)).to.deep.equal 'fission': ['a','l','p','h']

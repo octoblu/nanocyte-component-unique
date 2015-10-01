@@ -2,10 +2,7 @@ ReturnValue = require 'nanocyte-component-return-value'
 _ = require 'lodash'
 class Unique extends ReturnValue
   onEnvelope: (envelope) =>
-    {config,message} = envelope
-    {key,value} = config
-    _.set envelope, 'config.value', _.uniq(value)
-
-    envelope
+    {key,value} = envelope.config
+    "#{key}": _.uniq(value)
 
 module.exports = Unique
